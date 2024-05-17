@@ -4,3 +4,11 @@ users = {
 }
 
 print(users["admin"])
+
+
+users = {
+    "admin": {"id": 1, "name": "admin", "psw": "12345"},
+    "user": {"id": 1, "name": "user", "psw": "12345"}
+}
+
+print(users["user"]['id'])
