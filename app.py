@@ -10,8 +10,8 @@ menu = [{'url': '.index', 'title': 'Панель'},
         {'url': '.logout', 'title': 'Выйти'}]
 
 users = {
-    "admin": {"id": 1, "name": "admin", "psw": "12345"},
-    "user": {"id": 1, "name": "user", "psw": "12345"}
+    "admin": {"id": "1", "name": "admin", "psw": "12345"},
+    "user": {"id": "1", "name": "user", "psw": "12345"}
 }
 
 DEBUG = True
@@ -29,9 +29,9 @@ login_manager.login_message_category = "success"
 @login_manager.user_loader
 def load_user(user_id):
     print("load_user", user_id, users)
-    print(UserLogin.fromJson(user_id, users))
+    # print(UserLogin().fromJson(user_id, users))
     #ищет по id а у нас словарь по имени admin user и тп
-    return UserLogin.fromJson(user_id, users)
+    return UserLogin().fromJson(user_id, users)
 
 @app.route("/index")
 def index():
@@ -47,7 +47,7 @@ def login():
 
     if request.method == "POST":
         user = users[request.form['email']]
-        print(user)
+        print("2=", user)
         # if user and check_password_hash(user['psw'], request.form['psw']):
         if user:
             userlogin = UserLogin().create(user)

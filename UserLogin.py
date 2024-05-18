@@ -4,7 +4,8 @@ class UserLogin:
         return self
     
     def fromJson(self, name, users):
-        self.__user = users[name]
+        print("--->", name, users)
+        self.__user = users[name]        
         return self
  
     def create(self, user):
